@@ -1,0 +1,183 @@
+DOCTYPE html>  <html lang="fa" dir="rtl">  <head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>با من میای دیت؟</title>  
+
+<style>  
+    * {  
+        box-sizing: border-box;  
+    }  
+
+    body {  
+        margin: 0;  
+        width: 100vw;  
+        height: 100vh;  
+        overflow: hidden;  
+
+        display: flex;  
+        justify-content: center;  
+        align-items: center;  
+
+        background: white;  
+        font-family: Tahoma, Arial, sans-serif;  
+    }  
+
+    .box {  
+        width: 90%;  
+        max-width: 400px;  
+
+        padding: 40px 20px;  
+
+        background: white;  
+
+        border: 1px solid #eeeeee;  
+        border-radius: 20px;  
+
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);  
+
+        text-align: center;  
+    }  
+
+    h1 {  
+        margin: 0 0 35px;  
+        font-size: 25px;  
+        color: #222;  
+    }  
+
+    .yes {  
+        width: 100px;  
+        height: 50px;  
+
+        border: none;  
+        border-radius: 12px;  
+
+        background: #22c55e;  
+        color: white;  
+
+        font-size: 18px;  
+        font-weight: bold;  
+
+        cursor: pointer;  
+    }  
+
+    .yes:active {  
+        transform: scale(0.95);  
+    }  
+
+    .no {  
+        position: fixed;  
+
+        width: 100px;  
+        height: 50px;  
+
+        border: none;  
+        border-radius: 12px;  
+
+        background: #ef4444;  
+        color: white;  
+
+        font-size: 18px;  
+        font-weight: bold;  
+
+        cursor: pointer;  
+
+        z-index: 100;  
+    }  
+
+    .success {  
+        font-size: 24px;  
+        line-height: 2;  
+        font-weight: bold;  
+    }  
+
+    .emoji {  
+        font-size: 45px;  
+    }  
+</style>
+
+</head>  <body>  <div class="box" id="box">  
+
+    <h1>با من سکس میکنی؟ ❤️</h1>  
+
+    <button class="yes" id="yesButton">  
+        آره  
+    </button>  
+
+</div>  
+
+<button class="no" id="noButton">  
+    نه  
+</button>  
+
+
+<script>  
+
+    const noButton = document.getElementById("noButton");  
+    const yesButton = document.getElementById("yesButton");  
+    const box = document.getElementById("box");  
+
+
+    function moveNoButton() {  
+
+        const width = noButton.offsetWidth;  
+        const height = noButton.offsetHeight;  
+
+        const padding = 15;  
+
+        const maxX = window.innerWidth - width - padding;  
+        const maxY = window.innerHeight - height - padding;  
+
+        const x =  
+            Math.floor(Math.random() * (maxX - padding)) + padding;  
+
+        const y =  
+            Math.floor(Math.random() * (maxY - padding)) + padding;  
+
+        noButton.style.left = x + "px";  
+        noButton.style.top = y + "px";  
+    }  
+
+
+    // جای اولیه دکمه نه  
+    moveNoButton();  
+
+
+    // هر بار لمسش کنی فرار می‌کنه  
+    noButton.addEventListener("pointerdown", function (event) {  
+
+        event.preventDefault();  
+
+        moveNoButton();  
+
+    });  
+
+
+    // دکمه آره  
+    yesButton.addEventListener("click", function () {  
+
+        box.innerHTML = `  
+            <div class="success">  
+                <div class="emoji">🎉❤️</div>  
+
+                هوراااااا بچه هامون مبارک باشه!  
+
+                <br>  
+
+              بیا پیوی بریم سراغ بچه دار شدن❤️  
+            </div>  
+        `;  
+
+        noButton.remove();  
+
+    });  
+
+
+    // وقتی صفحه تغییر اندازه داد  
+    window.addEventListener("resize", function () {  
+
+        moveNoButton();  
+
+    });  
+
+</script>
+
+</body>  </html>
